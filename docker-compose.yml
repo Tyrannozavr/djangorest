@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres
+    env_file:
+      - ./.env
+    volumes:
+    - ./data/postgres_data:/usr/src/app/db/
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./:/urs/scr/app/
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  celery:
+    build: .
+    command:  celery -A djangoProject worker -l INFO
+    volumes:
+      - .:/usr/src/app
+    env_file:
+      - ./.env
+    depends_on:
+      - web
+      - redis
+
+  redis:
+    image: redis:5-alpine
+
+  flower:
+    build: ./
+    command: celery flower -A djangoProject.celery
+    volumes:
+      - .:/usr/scr/app/
+    working_dir: /data
+    ports:
+      - 5555:5555
+    env_file:
+      - ./.env
+    depends_on:
+      - celery
+      - redis

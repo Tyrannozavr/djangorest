@@ -34,7 +34,7 @@ class TicketDetail(RetrieveUpdateAPIView):
         email = self.request.user.email
         serializer.save(status=self.request.data.get('status', ''))
         instance = serializer.save()
-        # send.delay(email)
+        send.delay(email)
 
 
 class MessageList(ListCreateAPIView):
