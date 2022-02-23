@@ -10,10 +10,10 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from pathlib import Path
 import os
-import environ
+from pathlib import Path
 
+import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -153,4 +153,3 @@ CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 # EMAIL_HOST_PASSWORD = '123456'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
-

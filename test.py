@@ -1,9 +1,8 @@
 import json
-
-import requests
 import os
+
 import environ
-import json
+import requests
 
 env = environ.Env()
 environ.Env.read_env('.env')

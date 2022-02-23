@@ -1,13 +1,14 @@
+from authentication.permissions import IsOwnerOrReadOnly, IsStaff
 from rest_framework import status
-from rest_framework.generics import RetrieveUpdateAPIView, ListCreateAPIView
+from rest_framework.decorators import api_view
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-from rest_framework.decorators import api_view
 from rest_framework.reverse import reverse
-from .tasks import send
 
 from .serializers import *
-from authentication.permissions import IsOwnerOrReadOnly, IsStaff
+from .tasks import send
+
 
 @api_view(['GET'])
 def root(request, format=None):

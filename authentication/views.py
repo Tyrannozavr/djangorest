@@ -3,10 +3,9 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-
+from .permissions import IsOwnerOrReadOnly, IsStaff
 from .renderers import UserJSONRenderer
 from .serializers import *
-from .permissions import IsOwnerOrReadOnly, IsStaff
 
 
 class RegistrationAPIView(APIView):

@@ -15,10 +15,10 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.decorators import api_view
-from rest_framework.reverse import reverse
 from rest_framework.response import Response
+from rest_framework.reverse import reverse
 
 
 @api_view(['GET'])
@@ -26,6 +26,7 @@ def root(request):
     return Response({
         'support': reverse('support:root', request=request),
     })
+
 
 urlpatterns = [
     path('', root),
