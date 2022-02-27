@@ -9,7 +9,7 @@ services:
     - ./data/postgres_data:/usr/src/app/db/
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+#    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./:/urs/scr/app/
     ports:

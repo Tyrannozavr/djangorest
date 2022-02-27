@@ -153,3 +153,5 @@ CELERY_RESULT_BACKEND = os.environ.get("CELERY_BROKER", "redis://redis:6379/0")
 # EMAIL_HOST_PASSWORD = '123456'
 # EMAIL_PORT = 587
 # EMAIL_USE_TLS = True
+
+
